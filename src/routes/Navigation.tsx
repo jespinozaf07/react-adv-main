@@ -16,7 +16,7 @@ export const Navigation = () => {
           <img src={logo} alt="React Logo" />
           <ul>
             <li>
-              <NavLink to="/shooping" activeClassName="nav-active" exact>
+              <NavLink to="/" activeClassName="nav-active" exact>
                 Shooping
               </NavLink>
             </li>
@@ -36,7 +36,7 @@ export const Navigation = () => {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/shooping">
+          <Route path="/">
             <ShoopingPage />
           </Route>
           <Route path="/about">

@@ -5,16 +5,14 @@ import {
   ProductButtons,
 } from '../components/index';
 
-import '../styles/custom-styles.css';
-import { Product } from '../interfaces/interfaces';
+import { products } from '../data/products';
+import { useShopingCart } from '../hooks/useShoppingCart';
 
-const products: Product[] = [
-  { id: 1, title: 'Coffee Mug', img: './coffee-mug.png' },
-  { id: 2, title: 'Sugar Bag', img: './sugar.jpg' },
-  { id: 3, title: 'Rice Bag', img: './rice.jpeg' },
-];
+import '../styles/custom-styles.css';
 
 export const ShoopingPage = () => {
+  const { shoopingCart, onProductCountChange } = useShopingCart();
+
   return (
     <div>
       <h1>Shopping Store</h1>
@@ -26,9 +24,27 @@ export const ShoopingPage = () => {
             product={product}
             className="bg-dark"
             style={{ backgroundColor: '#70D1F8' }}
+            onChange={onProductCountChange}
+            value={shoopingCart[product.id]?.count || 0}
           >
             <ProductImage className="custom-image" />
             <ProductTitle className="text-white" />
+            <ProductButtons className="custom-buttons" />
+          </ProductCard>
+        ))}
+      </div>
+
+      <div className="shooping-cart">
+        {Object.entries(shoopingCart).map(([key, product]) => (
+          <ProductCard
+            key={key}
+            product={product}
+            className="bg-dark"
+            style={{ width: '100px' }}
+            onChange={onProductCountChange}
+            value={product.count}
+          >
+            <ProductImage className="custom-image" />
             <ProductButtons className="custom-buttons" />
           </ProductCard>
         ))}

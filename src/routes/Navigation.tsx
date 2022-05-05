@@ -7,7 +7,6 @@ import {
 import { ShoopingPage } from '../02-component-patterns/pages/ShoopingPage';
 
 import logo from '../logo.svg';
-
 export const Navigation = () => {
   return (
     <Router>
@@ -17,7 +16,7 @@ export const Navigation = () => {
           <ul>
             <li>
               <NavLink to="/" activeClassName="nav-active" exact>
-                Shooping
+                Shopping
               </NavLink>
             </li>
             <li>
@@ -36,14 +35,14 @@ export const Navigation = () => {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/">
-            <ShoopingPage />
-          </Route>
           <Route path="/about">
             <h1>About</h1>
           </Route>
           <Route path="/users">
             <h1>Users</h1>
+          </Route>
+          <Route path="/">
+            <ShoopingPage />
           </Route>
         </Switch>
       </div>
